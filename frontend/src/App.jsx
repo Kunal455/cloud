@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Cloud, LockKeyhole, Mail, UserRound, LogOut, ShieldCheck, ArrowRight, Eye, EyeOff } from "lucide-react";
 
-const API_URL = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
+const API_URL = (import.meta.env.VITE_API_URL || "http://35.154.223.212:5000").replace(/\/$/, "");
 
 export default function App() {
   const [mode, setMode] = useState("login");

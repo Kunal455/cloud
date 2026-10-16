@@ -27,7 +27,15 @@ app.disable("x-powered-by");
 app.use(cors({
   origin(origin, callback) {
     // Allow non-browser tools such as curl/Postman; browser requests are restricted.
-    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ""))) return callback(null, true);
+    if (!origin) return callback(null, true);
+    const cleanOrigin = origin.replace(/\/$/, "");
+    if (
+      allowedOrigins.includes("*") ||
+      allowedOrigins.includes(cleanOrigin) ||
+      cleanOrigin.endsWith(".vercel.app")
+    ) {
+      return callback(null, true);
+    }
     return callback(new Error("Origin not allowed by CORS"));
   },
   credentials: true
